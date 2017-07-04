@@ -1,32 +1,31 @@
 /**
- * Andela have decided to pay their senior developers
- * a base salary and 0.1% on the company's profit that is if profitable and 0 if not
  * 
- * Every developer must be proficient in one programming language
+ * author: Aaron Biliyok, receives a number n and generate prime nos from 0 to n 
  */
-import Developer from '../src/developer.js'
+function getPrimes(n){
+    /**returns invalid if less than or equal to 1,
+     * if not type of number
+     * **/
+    if(n <= 1 || typeof(n) !== 'number'||n % 1 > 0 || n === null){return 'Invalid'}
 
-class SeniorDeveloper extends Developer{
-    
-    constructor(name,phone,pay,language,profit){
-        super(name,phone,pay,language);
-        this.profit = profit
-    }
-
-    earnings(){
      
-      if(this.profit > 0){
-          return this.pay +(0.001*this.profit)
-      }
-
-      return this.pay
+    
+    let flag = [], primes = [];
+    for (let i = 2; i <= n; ++i) {
+        if (!flag[i]) {
+            // i has not been marked -- it is prime
+            primes.push(i); //pushed as a prime number
+            for (let j = i << 1; j <= n; j += i) {
+                flag[j] = true; //marks if it is a prime number//
+            }
+        }
     }
-
-    getDetails(){
-        return `Midlevel Developer: ${super.getDetails()}`
-    }
-
+    return primes; 
 }
 
-const aaron =new SeniorDeveloper('Aaron','07060884816',100,'Java',6500000)
-console.log(aaron.earnings())
+
+
+export default getPrimes
+
+
+
