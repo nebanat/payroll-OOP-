@@ -1,9 +1,14 @@
+/**
+ * Andela have decided to pay their Junior developers
+ * a weekly based salary + 10% of clients budget brought by the developer for incentive to bring clients
+ * Every developer must be proficient in one programming language
+ */
 import Developer from '../src/developer.js'
 
 class JuniorDeveloper extends Developer{
     
-    constructor(name,phone,pay,sales){
-        super(name,phone,pay);
+    constructor(name,phone,pay,language,sales){
+        super(name,phone,pay,language);
         this.sales=sales
     }
 
@@ -16,5 +21,5 @@ class JuniorDeveloper extends Developer{
     }
 }
 
-const aaron =new JuniorDeveloper('Aaron','07060884816',100,5000)
+const aaron =new JuniorDeveloper('Aaron','07060884816',100,'Java',5000)
 console.log(aaron.getDetails())
