@@ -31,6 +31,6 @@ class SeniorDeveloper extends Developer{
         return this.profit
     }
 
-    
-
 }
+
+export default SeniorDeveloper

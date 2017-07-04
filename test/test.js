@@ -1,59 +1,132 @@
 const assert = require('chai').assert;
-import getPrimes from '../src/app.js';
+import Developer from '../src/developer.js';
+import JuniorDeveloper from '../src/junior_developer.js'
+import MidlevelDeveloper from '../src/midlevel_developer.js'
+import SeniorDeveloper from '../src/senior_developer.js'
 
-describe("Prime",()=>{
-    describe("handle valid input", ()=>{
-        it("should return [2,3,5,7] for 10", ()=>{
-            let result=getPrimes(10)
-            assert.deepEqual(result,[2,3,5,7]);
-        });
-
-        it("should return [2,3,5,7,11,13,17,19] for 20", ()=>{
-            let result=getPrimes(20)
-            assert.deepEqual(result,[2,3,5,7,11,13,17,19]);
-        });
-
-        it("should return [2,3,5,7,11,13,17,19,23,29] for 30", ()=>{
-            let result=getPrimes(30)
-            assert.deepEqual(result,[2,3,5,7,11,13,17,19,23,29]);
-        });
-
-        it("should return [2,3,5,7,11,13,17,19,23,29,31,37] for 40", ()=>{
-            let result=getPrimes(40)
-            assert.deepEqual(result,[2,3,5,7,11,13,17,19,23,29,31,37]);
-        });
-        it("should return [2,3,5,7,11,13,17,19,23,29,31,37,41,43,47] for 50", ()=>{
-            let result=getPrimes(50)
-            assert.deepEqual(result,[2,3,5,7,11,13,17,19,23,29,31,37,41,43,47]);
-        });
-    })
-    describe("handle invalid input", ()=>{
-        it("should return Invalid for 1", ()=>{
-            let result=getPrimes(1)
-            assert.deepEqual(result,'Invalid');
+describe("developer",()=>{
+    describe("#developerclass", ()=>{
+      //This test block is for the developer base class//
+      let developer;
+      
+      beforeEach(()=>{
+        //initialize a new object before each test block executed
+         developer = new Developer('Aaron','07060884816',500,'Java')
+      })
+      
+       it("returns the name", ()=>{
+          assert.deepEqual(developer.name,'Aaron');
         });
 
-        it("should return Invalid for -1", ()=>{
-            let result=getPrimes(-1)
-            assert.deepEqual(result,'Invalid');
+        it("returns the details of the developer", ()=>{
+          assert.deepEqual(developer.getDetails(),'Aaron | 07060884816 | proficient in Java');
         });
 
-        it("should return Invalid for strings", ()=>{
-            let result=getPrimes('demo')
-            assert.deepEqual(result,'Invalid');
+        it("returns Invalid when a string is entered as Pay", ()=>{
+          assert.deepEqual(developer.setPay('twenty'),'Invalid');
         });
 
-        it("should return Invalid for 0", ()=>{
-            let result=getPrimes(0)
-            assert.deepEqual(result,'Invalid');
+        it("returns Invalid Phone when a wrong phone number is entered", ()=>{
+          assert.deepEqual(developer.setPhone('700594'),'Invalid number');
         });
 
-        it("should return Invalid for 12.5", ()=>{
-            let result=getPrimes(12.5)
-            assert.deepEqual(result,'Invalid');
+     })
+      //This test block tests juniordeveloper sub class//
+    describe("#juniordeveloper", ()=>{
+       let junior_developer;
+      
+      beforeEach(()=>{
+        //initialize a new object before each test block executed
+         junior_developer = new JuniorDeveloper('Dorathy','07060884816',1000,'Python',50000)
+      })
+      
+       it("returns the junior developer's client budget", ()=>{
+          assert.deepEqual(junior_developer.client_budget,50000);
         });
-    })
-    
+
+        it("returns the junior developers weekly earnings", ()=>{
+          assert.deepEqual(junior_developer.earnings(),6000);
+        });
+
+         it("returns the details of the junior developer", ()=>{
+          assert.deepEqual(junior_developer.getDetails(),'Junior Developer: Dorathy | 07060884816 | proficient in Python');
+        });
+
+        it("returns Invalid when a string is entered as the junior developer's client budget", ()=>{
+          assert.deepEqual(junior_developer.setClientBudget('twenty'),'Invalid');
+        });
+
+        /**it("returns Invalid when a string is entered as Pay", ()=>{
+          assert.deepEqual(developer.setPay('twenty'),'Invalid');
+        });**/})
+
+    //thus test block tests for midlevel developer sub class//
+    describe("#midleveldeveloper", ()=>{ 
+       let midlevel_developer;
+      
+       beforeEach(()=>{
+        //initialize a new object before each test block executed
+         midlevel_developer = new MidlevelDeveloper('Dorathy','07060884816',100,'COBOL',50)
+       })
+      
+       it("returns the midlevel developer's hours worked", ()=>{
+          assert.deepEqual(midlevel_developer.hours_worked,50);
+        });
+
+        it("returns the midlevel developers weekly earnings", ()=>{
+          assert.deepEqual(midlevel_developer.earnings(),4200);
+        });
+
+         it("returns the details of the midlevel developer", ()=>{
+          assert.deepEqual(midlevel_developer.getDetails(),'Midlevel Developer: Dorathy | 07060884816 | proficient in COBOL');
+        });
+
+        it("returns Invalid when a string is entered as the midlevel developer's client budget", ()=>{
+          assert.deepEqual(midlevel_developer.setHoursWorked('forty'),'Invalid hours worked');
+        });
+
+        /**it("returns Invalid when a string is entered as Pay", ()=>{
+          assert.deepEqual(developer.setPay('twenty'),'Invalid');
+        });**/
+
+     })
+
+    describe("#seniordeveloper", ()=>{ 
+       let senior_developer;
+      
+       beforeEach(()=>{
+        //initialize a new object before each test block executed
+         senior_developer = new SeniorDeveloper('Fidelis','08022442641',100000,'C++',1000000)
+       })
+      
+       it("returns the company's profit for the weekly", ()=>{
+          assert.deepEqual(senior_developer.profit,1000000);
+        });
+
+        it("returns the senior developers weekly earnings", ()=>{
+          assert.deepEqual(senior_developer.earnings(),101000);
+        });
+
+         it("returns the details of the senior developer", ()=>{
+          assert.deepEqual(senior_developer.getDetails(),'Senior Developer: Fidelis | 08022442641 | proficient in C++');
+        });
+
+        
+
+        /**it("returns Invalid when a string is entered as Pay", ()=>{
+          assert.deepEqual(developer.setPay('twenty'),'Invalid');
+        });**/
+
+     })
+
+     
+
+
+
+
+
+   
+
 })
 
 

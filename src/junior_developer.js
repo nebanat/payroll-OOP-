@@ -5,19 +5,35 @@
  */
 import Developer from '../src/developer.js'
 
+
 class JuniorDeveloper extends Developer{
     
-    constructor(name,phone,pay,language,hours){
+    constructor(name,phone,pay,language,client_budget){
         super(name,phone,pay,language);
-        this.hours=hours
+        this.client_budget=client_budget
     }
 
     earnings(){
-        return this.pay + (0.10*this.sales)
+        return this.pay + (0.10*this.client_budget)
     }
 
     getDetails(){
         return `Junior Developer: ${super.getDetails()}`
+    }
+
+    getClientBudget(){
+        if(typeof(this.client_budget)!='number'){
+            return 'Invalid'
+        }
+        return this.client_budget
+    }
+
+    setClientBudget(budget){
+        if(typeof(budget)!='number'){
+            return 'Invalid'
+        }
+        return this.client_budget=budget
+
     }
 }
 

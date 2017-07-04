@@ -30,5 +30,19 @@ class MidlevelDeveloper extends Developer{
     getDetails(){
         return `Midlevel Developer: ${super.getDetails()}`
     }
+    
+    getHoursWorked(){
+        return this.hours_worked;
+    }
+
+    setHoursWorked(hours){
+        if(typeof(hours)!='number'){
+            return 'Invalid hours worked'
+        }
+        return this.hours_worked=hours;
+    }
+
 
 }
+
+export default MidlevelDeveloper
