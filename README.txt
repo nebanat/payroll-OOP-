@@ -1,5 +1,6 @@
 /**
  * Author:Aaron Biliyok
+
  * This payroll program calculates the weekly salary of an andela developer depending on whether he/she is a Junior,
  * midlevel or Senior developer
  * 
