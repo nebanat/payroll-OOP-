@@ -7,9 +7,9 @@ import Developer from '../src/developer.js'
 
 class JuniorDeveloper extends Developer{
     
-    constructor(name,phone,pay,language,sales){
+    constructor(name,phone,pay,language,hours){
         super(name,phone,pay,language);
-        this.sales=sales
+        this.hours=hours
     }
 
     earnings(){
@@ -20,3 +20,5 @@ class JuniorDeveloper extends Developer{
         return `Junior Developer: ${super.getDetails()}`
     }
 }
+
+export default JuniorDeveloper

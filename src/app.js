@@ -1,25 +1,32 @@
 /**
- * Andela have decided to pay their Junior developers
- * a weekly based salary + 10% of clients budget brought by the developer for incentive to bring clients
+ * Andela have decided to pay their senior developers
+ * a base salary and 0.1% on the company's profit that is if profitable and 0 if not
+ * 
  * Every developer must be proficient in one programming language
  */
 import Developer from '../src/developer.js'
 
-class JuniorDeveloper extends Developer{
+class SeniorDeveloper extends Developer{
     
-    constructor(name,phone,pay,language,sales){
+    constructor(name,phone,pay,language,profit){
         super(name,phone,pay,language);
-        this.sales=sales
+        this.profit = profit
     }
 
     earnings(){
-        return this.pay + (0.10*this.sales)
+     
+      if(this.profit > 0){
+          return this.pay +(0.001*this.profit)
+      }
+
+      return this.pay
     }
 
     getDetails(){
-        return `Junior Developer: ${super.getDetails()}`
+        return `Midlevel Developer: ${super.getDetails()}`
     }
+
 }
 
-const aaron =new JuniorDeveloper('Aaron','07060884816',100,'Java',5000)
-console.log(aaron.getDetails())
+const aaron =new SeniorDeveloper('Aaron','07060884816',100,'Java',6500000)
+console.log(aaron.earnings())
